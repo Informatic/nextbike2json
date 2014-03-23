@@ -4,10 +4,13 @@ import json
 
 if len(sys.argv) < 2:
     print >>sys.stderr, 'usage: python %s data.xml' % sys.argv[0]
-    print >>sys.stderr, '\nWarsaw Veturilo: https://www.nextbike.pl/maps/nextbike-official.xml?city=210'
+    print >>sys.stderr, '\nWarsaw Veturilo: https://nextbike.net/maps/nextbike-official.xml?city=210'
     exit(1)
 
-tree = minidom.parse(sys.argv[1])
+if sys.argv[1] == '-':
+    tree = minidom.parse(sys.stdin)
+else:
+    tree = minidom.parse(sys.argv[1])
 places_list = {}
 for place_elm in tree.childNodes[0].getElementsByTagName("place"):
     place = {"lat": place_elm.getAttribute("lat"),

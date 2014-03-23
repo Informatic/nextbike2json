@@ -10,3 +10,7 @@ Usage
 
     wget https://nextbike.net/maps/nextbike-official.xml?city=210 -O veturilo.xml
     python nextbike2json.py veturilo.xml > veturilo.json
+    
+    # OR
+    
+    wget -q https://nextbike.net/maps/nextbike-official.xml?city=210 -O - | python nextbike2json.py -
